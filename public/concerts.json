@@ -1,0 +1,44 @@
+ [
+      {
+        "id": 1,
+        "name": "Venue Booking and Setup",
+        "image": "https://imgdb.net/storage/uploads/07710eaa4e8871651e9aeeb6e124d46168a4c8b5d0fa2d82337b6516f75a5093.jpg",
+        "price": "$1999.99",
+        "description": "Secure the perfect venue for your concert and let us handle the setup. Our team ensures the stage, lighting, and sound systems are optimized for an immersive and electrifying musical experience."
+      },
+      {
+        "id": 2,
+        "name": "Artist Management",
+        "image": "https://imgdb.net/storage/uploads/744888749ca45fe1ca550d7ccff3d4cb3dba008a0b812dbff8eaa8ca1c1a0ff1.jpg",
+        "price": "$2499.99",
+        "description": "Bring your favorite artists to the stage seamlessly with our artist management service. From negotiations to logistics, we ensure a smooth collaboration to make your concert a star-studded event."
+      },
+      {
+        "id": 3,
+        "name": "Ticketing and Registration",
+        "image": "https://imgdb.net/storage/uploads/c1e17e1ec89c47ac6091b61cc111f90b34b669ed5aae01d1ffb47bd7b383a0b7.jpg",
+        "price": "$1.99 per ticket",
+        "description": "Simplify the ticketing process with our online ticketing and registration service. Reach a wider audience and manage entries efficiently, ensuring a hassle-free experience for both organizers and attendees."
+      },
+      {
+        "id": 4,
+        "name": "Audio-Visual Production",
+        "image": "https://imgdb.net/storage/uploads/a48c62bc57d7b7df184fc2174556236aab153f072506929cc44ce320b5f37721.jpg",
+        "price": "$2999.99",
+        "description": "Enhance the sensory experience of your concert with our state-of-the-art audio-visual production. Our team ensures top-notch sound quality and captivating visuals to leave a lasting impression on your audience."
+      },
+      {
+        "id": 5,
+        "name": "Event Security",
+        "image": "https://imgdb.net/storage/uploads/dee088ad112c14d2c2ef15b4634441e9b271b7c704f7f7f24910fc858ea1d978.jpg",
+        "price": "$1499.99",
+        "description": "Prioritize safety at your concert with our professional event security services. Our trained personnel will maintain a secure environment, allowing attendees to enjoy the music without worry."
+      },
+      {
+        "id": 6,
+        "name": "Concert Merchandising",
+        "image": "https://imgdb.net/storage/uploads/e565298cfb5ae1f0b0f0f8770bf6d69197d563c40011a78e25a2efb2a9278ea4.jpg",
+        "price": "$9.99 and up",
+        "description": "Maximize your event revenue with custom concert merchandise. From T-shirts to souvenirs, our merchandising service helps you create lasting memories and brand engagement among attendees."
+      }
+    ]
