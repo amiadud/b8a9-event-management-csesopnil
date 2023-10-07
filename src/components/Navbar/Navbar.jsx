@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import Logo from '../../assets/img/logo.png';
 import './Navbar.css'
 import useAuth from '../../hooks/useAuth';
 
@@ -38,7 +38,7 @@ const Navbar = () => {
         {navlinks}
       </ul>
     </div>
-    <img className='w-28 avatar normal-case' src="" alt="" />
+    <img className='w-28 avatar normal-case' src={Logo} alt="" />
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
