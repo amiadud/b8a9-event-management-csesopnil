@@ -1,17 +1,29 @@
 import React from 'react';
 import logo from '../../assets/img/Logo.png'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import './Navbar.css'
+import useAuth from '../../hooks/useAuth';
 
 
 
 const Navbar = () => {
 
+  const {user, userLogout} = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    userLogout()
+    .then(res => {
+      console.log('Logout completed',res);
+      navigate('/login');
+    })
+  }
+
     const navlinks = <>
                     <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md " to="/">Home</NavLink>
-                    <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md" to="/services">Service</NavLink>
-                    <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md" to="/login">Login</NavLink>
+                    <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md" to="/services">Services</NavLink>
+                    {/* <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md" to="/login">Login</NavLink> */}
                     <NavLink className="mx-2 text-lg px-4 py-1 border rounded-md" to="/register">Register</NavLink>
     </>
 
@@ -35,7 +47,10 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn btn-sm">Login</a>
+    {
+      user ? <NavLink onClick={handleLogout} to="/login" className="btn btn-sm">Logout</NavLink> : <NavLink to="/login" className="btn btn-sm">Login</NavLink>
+    }
+    
   </div>
 </div>
         </>

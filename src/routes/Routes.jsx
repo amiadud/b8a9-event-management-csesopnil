@@ -4,6 +4,9 @@ import Home from "../page/Home/Home";
 import Login from "../page/Login/Login";
 import Register from "../page/Register/Register";
 import Services from "../components/Services/Services";
+import Service from "../components/Services/Service";
+import ServiceDetail from "../components/Services/ServiceDetail";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -26,6 +29,10 @@ const Routes = createBrowserRouter([
             {
                 path:"/services/",
                 element: <Services></Services>
+            },
+            {
+                path:"/service-details/:id",
+                element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>
             }
         ]
     }

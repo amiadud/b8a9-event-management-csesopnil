@@ -1,10 +1,64 @@
 import React from 'react';
+import useAuth from '../../hooks/useAuth';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const {userLogin} = useAuth();
+  const navigate = useNavigate()
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value
+    const password = e.target.password.value
+    userLogin(email, password)
+    .then( res => {
+      console.log("login successful",res);
+      navigate('/');
+    })
+  }
+
     return (
-        <div>
-            <h2>this is login page</h2>
+        <>
+           <div className="hero ">
+  <div className=" flex-col  my-5  lg:flex-row-reverse">
+    <div className="text-center  my-5  lg:text-left">
+      <h1 className="text-5xl font-bold">Login now!</h1>    </div>
+    <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+      <form onSubmit={handleLogin} className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="email" name='email' className="input input-bordered" required />
         </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
+          </label>
+          <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+          <label className="label">
+            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          </label>
+        </div>
+        <div className="form-control mt-6">
+          <button type='submit'  className="btn btn-primary">Login</button>
+          <p className='mt-2'>Create a new Account. Visit <Link className='link-success font-semibold' to="/register">Register</Link></p>
+
+        </div>
+      </form>
+      <div className='text-center '>
+          <h2 className='text-lg font-semibold mb-4'>Social Login</h2>
+          <hr className='my-4' />
+          <div className='flex gap-2 justify-center my-4'>
+            <button className='btn btn-secondary btn-sm capitalize'>Google</button>
+          <button className='btn btn-neutral btn-sm capitalize'>Github</button>
+          </div>
+          </div>
+    </div>
+  </div>
+</div>
+        </>
     );
 };
 
