@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../../assets/img/Logo.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import './Navbar.css'
@@ -39,7 +38,7 @@ const Navbar = () => {
         {navlinks}
       </ul>
     </div>
-    <img className='w-28 avatar normal-case' src={logo} alt="" />
+    <img className='w-28 avatar normal-case' src="" alt="" />
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
