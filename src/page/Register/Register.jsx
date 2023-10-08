@@ -58,13 +58,12 @@ const handleRegister = (e) => {
 
     return (
         <>
-             <div className="hero ">
+             <div className=" ">
   <div className=" flex-col  my-5  lg:flex-row-reverse">
     <div className="text-center  my-5  lg:text-left">
       <h1 className="text-5xl font-bold text-center">Register now!</h1>    </div>
-    <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+    <div className="card md:w-3/6 mx-auto flex-shrink-0 shadow-2xl bg-base-100">
       <form onSubmit={handleRegister} className="card-body">
-        <div className='flex gap-2'>
         <div className="form-control">
           <label className="label">
             <span className="label-text">First Name</span>
@@ -76,7 +75,6 @@ const handleRegister = (e) => {
             <span className="label-text">Last Name</span>
           </label>
           <input type="text" placeholder="Last name" name='lname' className="input input-bordered" />
-        </div>
         </div>
         <div className="form-control">
           <label className="label">
@@ -102,6 +100,7 @@ const handleRegister = (e) => {
         </div>
         <div className="form-control mt-2">
           <button className="btn btn-primary">Register Now</button>
+          <p className="mt-2">Already have an account?<Link to="/login" className=" ml-3 link link-hover mt-3 link-success font-medium">Login</Link></p>
         </div>
       </form>
     </div>
