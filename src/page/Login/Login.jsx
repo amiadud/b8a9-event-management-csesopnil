@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
@@ -47,14 +48,7 @@ const Login = () => {
 
         </div>
       </form>
-      <div className='text-center '>
-          <h2 className='text-lg font-semibold mb-4'>Social Login</h2>
-          <hr className='my-4' />
-          <div className='flex gap-2 justify-center my-4'>
-            <button className='btn btn-secondary btn-sm capitalize'>Google</button>
-          <button className='btn btn-neutral btn-sm capitalize'>Github</button>
-          </div>
-          </div>
+      <SocialLogin></SocialLogin>
     </div>
   </div>
 </div>
