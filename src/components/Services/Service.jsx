@@ -15,9 +15,8 @@ const Service = ({event}) => {
                 {
                     description.length > 100 ? <p> {description.slice(0,100)}</p> :<p>{description}</p>
                 }
-                    
                 </p>
-                <Link to={`/service-details/${id}`} className='btn hover:bg-pink-400 w-full bg-pink-600 rounded-l-none rounded-r-none text-base text-white'>Read More</Link>
+                <Link to={`/service-details/${id}`} className='btn hover:bg-pink-400 w-full bg-pink-600 rounded-l-none rounded-r-none text-base text-white'>More Details</Link>
         </div>
         </>
     );

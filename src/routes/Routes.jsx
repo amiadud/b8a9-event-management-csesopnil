@@ -7,12 +7,14 @@ import Services from "../components/Services/Services";
 import Service from "../components/Services/Service";
 import ServiceDetail from "../components/Services/ServiceDetail";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../page/ErrorPage/ErrorPage";
+import Dashboard from "../components/Profile/Profile";
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
-        errorElement: <div>dd</div>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path:"/",
@@ -33,7 +35,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path:"/service-details/:id",
-                element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>
+                element: <PrivateRoute><ServiceDetail></ServiceDetail></PrivateRoute>,
+            },
+            {
+                path:"/Profile/",
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             }
         ]
     }

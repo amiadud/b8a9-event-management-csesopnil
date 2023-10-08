@@ -23,7 +23,7 @@ const ServiceDetail = () => {
             <div className='relative '>
             <img src={filterData[0]?.image} alt="" />
            <div className='bg-red-500'>
-           <h2 className='text-3xl absolute bottom-4 left-2 text-white '>Price: {filterData[0]?.price}</h2>
+           <h2 className='text-xl absolute bottom-4 bg-red-500 py-2 px-3 rounded-lg left-2 text-white '>Price: {filterData[0]?.price}</h2>
            </div>
             </div>
             <div>

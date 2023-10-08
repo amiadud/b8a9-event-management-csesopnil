@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import useAuth from '../../hooks/useAuth';
-import { updateProfile } from 'firebase/auth';
+import { sendEmailVerification, updateProfile } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -17,36 +18,41 @@ const handleRegister = (e) => {
     const email = e.target.email.value
     const password = e.target.password.value
     const AcceptTerms = e.target.terms.checked
-    console.log(fullname, img, email, password);
     e.target.reset();
      
-    if(!AcceptTerms){
-      console.log("Please accept terms and condition And try again "); 
-      return;
-     }
-    else if(password < 6){
-     return toast.error("is less than 6 characters");
+    if (password.length < 6 ){
+      return toast.error("Password should be at least 6 characters or longer..");
     }
-
-    
-
+    else if (!/[A-Z]/.test(password)){
+      return toast.error('Your password should have at least one uppercase characters..');
+    }
+    else if (!AcceptTerms){
+      return toast.error("Please accepted our terms and condition..");
+    }
     createUser(email, password)
     .then(res => {
-        console.log(res.user);
+        toast.success("Your Account was successfully Registered..");
         updateProfile(res.user, {
             displayName:fullname,
             photoURL:img
         })
         .then(() => {
-            console.log("update profile");
+            toast.success("Your Profile Updated..")
         })
-        .catch(err => {
-            console.log(err);
+        .catch(() => {
+          toast.error("Your Profile Not Updated..")
         })
 
+        //send verification email
+        sendEmailVerification(res.user)
+        .then( ()=> {
+          toast.warning('Please check your email and verify your account')
+        })
+        .catch()
+
     })
-    .catch(err => {
-        console.log(err.message);
+    .catch((error) => {
+      toast.warning(error);
     })
 }
 
@@ -55,7 +61,7 @@ const handleRegister = (e) => {
              <div className="hero ">
   <div className=" flex-col  my-5  lg:flex-row-reverse">
     <div className="text-center  my-5  lg:text-left">
-      <h1 className="text-5xl font-bold">Register now!</h1>    </div>
+      <h1 className="text-5xl font-bold text-center">Register now!</h1>    </div>
     <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
       <form onSubmit={handleRegister} className="card-body">
         <div className='flex gap-2'>
@@ -89,11 +95,8 @@ const handleRegister = (e) => {
             <span className="label-text">Password</span>
           </label>
           <input type="password" placeholder="Enter your password" name='password' className="input input-bordered" />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
         </div>
-        <div className="">
+        <div>
         <input type="checkbox" name="terms" id="" />
         <label className="ml-2" htmlFor="terms">Accept <Link className='font-semibold' to="#">Term and Condition</Link></label>
         </div>
@@ -104,6 +107,7 @@ const handleRegister = (e) => {
     </div>
   </div>
 </div>
+<ToastContainer />
         </>
     );
 };

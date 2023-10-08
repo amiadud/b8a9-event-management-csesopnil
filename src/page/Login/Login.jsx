@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import auth from '../../firebase/firebase.config';
 
 const Login = () => {
 
   const {userLogin} = useAuth();
   const navigate = useNavigate()
+
+  const emailRef = useRef(null)
   
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,12 +27,26 @@ const Login = () => {
     })
   }
 
+  const handleForgetPassword = (e) => {
+    const email = e.target.email.value
+    
+    // send validation email
+
+    UserPassword(email)
+    .then(()=> {
+      console.log('Send your password reset email');
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
+
     return (
         <>
            <div className="hero ">
   <div className=" flex-col  my-5  lg:flex-row-reverse">
     <div className="text-center  my-5  lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>    </div>
+      <h1 className="text-5xl font-bold text-center">Login now!</h1>    </div>
     <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
@@ -44,7 +61,7 @@ const Login = () => {
           </label>
           <input type="password" placeholder="password" name='password' className="input input-bordered" required />
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            <Link onClick={()=> handleForgetPassword} to="#" className="label-text-alt link link-hover">Forgot password?</Link>
           </label>
         </div>
         <div className="form-control mt-6">
