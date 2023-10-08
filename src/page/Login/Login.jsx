@@ -2,6 +2,8 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -16,6 +18,9 @@ const Login = () => {
     .then( res => {
       console.log("login successful",res);
       navigate('/');
+    })
+    .catch((error)=>{
+      toast.error("password doesn't match");
     })
   }
 
@@ -52,6 +57,7 @@ const Login = () => {
     </div>
   </div>
 </div>
+<ToastContainer />
         </>
     );
 };

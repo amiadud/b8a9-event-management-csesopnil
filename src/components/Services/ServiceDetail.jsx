@@ -19,10 +19,15 @@ const ServiceDetail = () => {
     const filterData = serviceData.filter(data => data.id === intId)
 
     return (
-        <div>
-            <div className='space-y-4 my-2'>
+        <div className=''>
+            <div className='relative '>
             <img src={filterData[0]?.image} alt="" />
-            <h2 className='text-4xl'>{filterData[0]?.name}</h2>
+           <div className='bg-red-500'>
+           <h2 className='text-3xl absolute bottom-4 left-2 text-white '>Price: {filterData[0]?.price}</h2>
+           </div>
+            </div>
+            <div>
+            <h2 className='text-5xl font-semibold my-5'>{filterData[0]?.name}</h2>
             <p>{filterData[0]?.description}</p>
             </div>
         </div>

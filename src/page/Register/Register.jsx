@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { updateProfile } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
@@ -23,7 +24,10 @@ const handleRegister = (e) => {
       console.log("Please accept terms and condition And try again "); 
       return;
      }
-    
+    else if(password < 6){
+     return toast.error("is less than 6 characters");
+    }
+
     
 
     createUser(email, password)
