@@ -42,7 +42,7 @@ const handleRegister = (e) => {
         })
         .then(() => {
             setTimeout( ()=>{
-              navigate('/login')
+              navigate('/profile')
             },1000)
             toast.success("Your Profile Updated..")
         })
@@ -50,7 +50,7 @@ const handleRegister = (e) => {
           toast.error("Your Profile Not Updated..")
         })
     })
-    .catch((error) => {
+    .catch(() => {
       toast.warning("Not Successful Registered..");
     })
 }

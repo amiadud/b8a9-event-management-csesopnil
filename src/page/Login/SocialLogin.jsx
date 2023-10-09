@@ -13,7 +13,7 @@ const SocialLogin = () => {
         media()
         .then(() => {
             setTimeout(() => {
-                navigate('/') 
+                navigate('/profile') 
               }, 1000);
             toast.success("Logged Successful");
         })
