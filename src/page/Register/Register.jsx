@@ -24,7 +24,10 @@ const handleRegister = (e) => {
       return toast.error("Password should be at least 6 characters or longer..");
     }
     else if (!/[A-Z]/.test(password)){
-      return toast.error('Your password should have at least one uppercase characters..');
+      return toast.error('Do not have a capital letter');
+    }
+    else if (!/\s[!@#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\][A-Z](.)/.test(password)){
+      return toast.error('Do not have a special character');
     }
     else if (!AcceptTerms){
       return toast.error("Please accepted our terms and condition..");
