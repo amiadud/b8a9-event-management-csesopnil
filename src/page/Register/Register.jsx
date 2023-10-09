@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { sendEmailVerification, updateProfile } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,16 +9,16 @@ const Register = () => {
 
     const { createUser } = useAuth()
 
+    const navigate = useNavigate()
+
 const handleRegister = (e) => {
     e.preventDefault();
-    const fname = e.target.fname.value
-    const lname = e.target.lname.value
-    const fullname = fname + " "+ lname
+    const username = e.target.username.value
     const img = e.target.img.value
     const email = e.target.email.value
     const password = e.target.password.value
     const AcceptTerms = e.target.terms.checked
-    e.target.reset();
+    // e.target.reset();
      
     if (password.length < 6 ){
       return toast.error("Password should be at least 6 characters or longer..");
@@ -26,7 +26,8 @@ const handleRegister = (e) => {
     else if (!/[A-Z]/.test(password)){
       return toast.error('Do not have a capital letter');
     }
-    else if (!/\s[!@#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\](.)/.test(password)){
+    if (!/[>!#@$%&?"<]/.test(password))
+    {
       return toast.error('Do not have a special character');
     }
     else if (!AcceptTerms){
@@ -36,28 +37,21 @@ const handleRegister = (e) => {
     .then(res => {
         toast.success("Your Account was successfully Registered..");
         updateProfile(res.user, {
-            displayName:fullname,
+            displayName:username,
             photoURL:img
         })
         .then(() => {
+            setTimeout( ()=>{
+              navigate('/login')
+            },1000)
             toast.success("Your Profile Updated..")
         })
         .catch(() => {
           toast.error("Your Profile Not Updated..")
         })
-
-        //send verification email
-        sendEmailVerification(res.user)
-        .then( ()=> {
-          toast.warning('Please check your email and verify your account')
-        })
-        .catch(()=>{
-          toast.warning("Don't verify your account...")
-        })
-
     })
     .catch((error) => {
-      toast.warning(error);
+      toast.warning("Not Successful Registered..");
     })
 }
 
@@ -71,15 +65,9 @@ const handleRegister = (e) => {
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
           <label className="label">
-            <span className="label-text">First Name</span>
+            <span className="label-text">User Name</span>
           </label>
-          <input type="text" placeholder="First name" name='fname' className="input input-bordered" />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Last Name</span>
-          </label>
-          <input type="text" placeholder="Last name" name='lname' className="input input-bordered" />
+          <input type="text" placeholder="username" name='username' className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">

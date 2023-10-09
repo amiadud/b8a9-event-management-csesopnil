@@ -18,8 +18,8 @@ const Login = () => {
     const email = e.target.email.value
     const password = e.target.password.value
     userLogin(email, password)
-    .then( res => {
-      console.log("login successful",res);
+    .then( () => {
+      toast.success("Logged Successful doesn't match");
       navigate('/');
     })
     .catch((error)=>{

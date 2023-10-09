@@ -1,6 +1,8 @@
 import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SocialLogin = () => {
 
@@ -9,9 +11,11 @@ const SocialLogin = () => {
 
     const LoginSocial = (media) => {
         media()
-        .then(res => {
-            console.log("login successful",res.user);
-            navigate('/');
+        .then(() => {
+            setTimeout(() => {
+                navigate('/') 
+              }, 1000);
+            toast.success("Logged Successful");
         })
         .catch(err => console.error(err));
     }
@@ -24,6 +28,7 @@ const SocialLogin = () => {
           <button onClick={()=> LoginSocial(googleLogin)} className='btn btn-secondary btn-sm capitalize'>Google</button>
         <button onClick={()=> LoginSocial(githubLogin)} className='btn btn-neutral btn-sm capitalize'>Github</button>
         </div>
+        <ToastContainer />
         </div>
     );
 };

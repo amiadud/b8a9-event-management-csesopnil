@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import './Navbar.css'
 import useAuth from '../../hooks/useAuth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -14,8 +16,11 @@ const Navbar = () => {
   const handleLogout = () => {
     userLogout()
     .then(res => {
-      console.log('Logout completed',res);
-      navigate('/login');
+      setTimeout(() => {
+        navigate('/login') 
+        
+      }, 1000);
+    toast.success("Logout Successful");
     })
   }
 
@@ -45,6 +50,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+  <p className='mr-3'>{user?.displayName}</p>
   {
     user ? <><div className="dropdown dropdown-end">
     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -67,6 +73,7 @@ const Navbar = () => {
     }
   </div>
 </div>
+<ToastContainer />
         </>
     );
 };
