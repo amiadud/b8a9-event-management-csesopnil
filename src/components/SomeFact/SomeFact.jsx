@@ -4,7 +4,7 @@ const SomeFact = () => {
     return (
         <>
 
-<section className="facts my-4">
+<section data-aos="fade-left" className="facts my-4">
             <h3 className="text-3xl font-bold text-center mb-8">Some Facts</h3>
             <div className="flex justify-center md:flex-row flex-col gap-9 flex-warp">
                 <div className="border-2 p-[50px] rounded-lg outline-none hover:border-pink-500 hover:shadow-md text-center">

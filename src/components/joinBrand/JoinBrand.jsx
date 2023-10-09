@@ -4,7 +4,7 @@ const JoinBrand = () => {
     return (
         <>
 
-        <section className="text-center space-y-4 mb-9 ">
+        <section data-aos="fade-right" className="text-center space-y-4 mb-9 ">
             <h3 className="text-4xl font-bold mt-7">Our Sponsors</h3>
             <p className="text-gray-500">We've had the pleasure of working with industry-defining brands. These are just some of them.</p>
             <div className="flex justify-center items-center flex-wrap gap-5 py-5 ">

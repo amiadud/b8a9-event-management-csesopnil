@@ -8,7 +8,7 @@ const Service = ({event}) => {
 
     return (
         <>
-        <div className='border hover:shadow-lg rounded-md text-center  space-y-4 my-5 '>
+        <div data-aos="flip-up" className='border hover:shadow-lg rounded-md text-center  space-y-4 my-5 '>
                 <img className='rounded-t-md ' src={image} />
                 <h2 className='text-lg font-semibold hover:text-red-600'><Link to={`/service-details/${id}`}>{name}</Link></h2>
                 <p className='text-justify mx-2 '>
