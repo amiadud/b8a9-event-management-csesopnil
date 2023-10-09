@@ -26,7 +26,7 @@ const handleRegister = (e) => {
     else if (!/[A-Z]/.test(password)){
       return toast.error('Do not have a capital letter');
     }
-    else if (!/\s[!@#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\][A-Z](.)/.test(password)){
+    else if (!/\s[!@#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\](.)/.test(password)){
       return toast.error('Do not have a special character');
     }
     else if (!AcceptTerms){
@@ -51,7 +51,9 @@ const handleRegister = (e) => {
         .then( ()=> {
           toast.warning('Please check your email and verify your account')
         })
-        .catch()
+        .catch(()=>{
+          toast.warning("Don't verify your account...")
+        })
 
     })
     .catch((error) => {
